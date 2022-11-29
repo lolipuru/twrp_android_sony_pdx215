@@ -42,6 +42,7 @@ on init
 
 on boot
     setprop sys.usb.config adb
+    start vendor.vibrator.cs40l25
     start health-hal-2-1
 
 on property:vendor.sys.listeners.registered=true
@@ -65,3 +66,8 @@ service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qt
     group root
     disabled
     seclabel u:r:recovery:s0
+
+service vendor.vibrator.cs40l25 /vendor/bin/hw/android.hardware.vibrator-service.cs40l25
+    class hal
+    user system
+    group system
